@@ -46,8 +46,6 @@ const InsertMember = ({
     const dispatch = useDispatch();
     const insertMember = async (x: BodyCreateMember) => dispatch(userOperations
         .insertMember(x));
-    const insertAdmin = async (x: BodyCreateMember) => dispatch(userOperations
-      .insertAdmin(x));
     const editMember = async (x: BodyCreateMember, y: number) => dispatch(userOperations
         .editMember(x, y));
     const [loading, setLoading] = useState(false);
@@ -80,14 +78,7 @@ const InsertMember = ({
         try {
           if (isEdit && user) {
             await editMember(bodyCreateMember, user.idUser);
-          } else if (bodyCreateMember.admin) {
-              await insertAdmin(bodyCreateMember);
-              setSnackbar({
-                type: 'success',
-                message: 'Usuário criado com sucesso.',
-                show: true,
-              });
-            } else {
+          } else {
               await insertMember(bodyCreateMember);
               setSnackbar({
                 type: 'success',

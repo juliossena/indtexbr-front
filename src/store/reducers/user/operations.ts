@@ -36,45 +36,9 @@ export const getAllUsers = () => async (dispatch: Dispatch) => {
     }
 };
 
-export const blockUser = (idUser: number) => async (dispatch: Dispatch) => {
-    try {
-        await serviceUser.blockUser(idUser);
-        getAllUsers()(dispatch);
-    } catch (error) {
-        throw new Error(error);
-    }
-};
-
-export const unlockUser = (idUser: number) => async (dispatch: Dispatch) => {
-    try {
-        await serviceUser.unlockUser(idUser);
-        getAllUsers()(dispatch);
-    } catch (error) {
-        throw new Error(error);
-    }
-};
-
 export const insertMember = (body: BodyCreateMember) => async (dispatch: Dispatch) => {
     try {
         await serviceUser.insertMember(body);
-        getAllUsers()(dispatch);
-    } catch (error) {
-        throw new Error(error);
-    }
-};
-
-export const importUserList = (body: FormData) => async (dispatch: Dispatch) => {
-    try {
-        await serviceUser.importUserList(body);
-        getAllUsers()(dispatch);
-    } catch (error) {
-        throw new Error(error);
-    }
-};
-
-export const insertAdmin = (body: BodyCreateMember) => async (dispatch: Dispatch) => {
-    try {
-        await serviceUser.insertAdmin(body);
         getAllUsers()(dispatch);
     } catch (error) {
         throw new Error(error);

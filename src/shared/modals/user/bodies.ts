@@ -16,8 +16,3 @@ export interface BodyUserLogin {
     email: string;
     password: string;
 }
-
-export interface BodyInsertArea {
-    idArea?: number;
-    name: string;
-}
