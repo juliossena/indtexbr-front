@@ -29,7 +29,7 @@ export const useTypeContainer = (({ typeButton = 'primary', disabled = false }: 
         height: 40px;
         cursor: ${disabled ? 'default' : 'pointer'};
         background-color: ${disabled ? colors.disabled : colors.white};
-        border: 1px solid ${colors.purpleRegular};
+        border: 1px solid ${colors.primary};
         border-radius: 4px;
 
         display: flex;

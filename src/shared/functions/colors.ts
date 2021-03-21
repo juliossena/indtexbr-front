@@ -18,13 +18,10 @@ export enum colors {
   redLight = '#FFD1D1',
   red = '#B90000',
   yellow = '#ffd33a',
-  secondary = '#8C29B0',
+  secondary = '#188ba3',
   primary = '#00687e',
   yellowRegular = '#FFF85C',
   orangeRegular = '#F09838',
-  pinkDark = '#8C29B0',
-  pinkRegular = '#C833DB',
-  purpleRegular = '#512C85',
 }
 
 export default colors;

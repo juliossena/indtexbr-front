@@ -5,11 +5,11 @@ import { colors } from '../../functions/colors';
 export const TitleTourney = styled.h1`
     width: 100%;
     height: 64px;
-    border-bottom: 4px solid ${colors.pinkDark};
+    border-bottom: 4px solid ${colors.primary};
     padding: 24px;
 
     font-family: ${fonts.bold};
-    color: ${colors.pinkDark};
+    color: ${colors.primary};
     font-style: normal;
     font-weight: bold;
     font-size: 16px;

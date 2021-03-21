@@ -7,7 +7,7 @@ export const Container = styled.div`
     align-items: center;
 
     input[type='radio']:checked:after {
-        background-color: ${colors.pinkDark};
+        background-color: ${colors.primary};
     }
 `;
 
