@@ -1,0 +1,61 @@
+@font-face {
+    font-family: 'Poppins-Bold';
+    src: url(/fonts/Poppins-Bold.ttf);
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins-Regular';
+    src: url(/fonts/Poppins-Regular.ttf);
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins-SemiBold';
+    src: url(/fonts/Poppins-SemiBold.ttf);
+    font-style: normal;
+}
+
+p, h1, h2, h3, h4 {
+  font-family: 'Poppins-Regular';
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*:focus {
+  outline: none;
+}
+
+html, body, #root, .App {
+  min-height: 100vh;
+  width: 100vw;
+}
+
+body {
+  background-color: #f7f8fa;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #f7f8fa;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: #f7f8fa;
+}
+
+::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 0 0 6px rgba(58, 57, 57, 0.3);
+  background-color: #00546F;
+}
+
+h1 {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 28px;
+}
