@@ -5,6 +5,7 @@ import { MenuUrl } from './shared/enums/menuUrl';
 import Logged from './features/logged';
 import Login from './features/login';
 import User from './features/user';
+import Product from './features/product';
 import Home from './features/home';
 
 const Router = () => (
@@ -16,6 +17,9 @@ const Router = () => (
       </Route>
       <Route path={MenuUrl.user} exact>
         <Logged><User /></Logged>
+      </Route>
+      <Route path={MenuUrl.product} exact>
+        <Logged><Product /></Logged>
       </Route>
     </Switch>
   </BrowserRouter>

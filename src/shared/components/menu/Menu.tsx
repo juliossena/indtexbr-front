@@ -51,15 +51,15 @@ const Menu = () => {
       )}
 
       <ButtonMenu
-        onClick={() => history.push(MenuUrl.user)}
+        onClick={() => history.push(MenuUrl.product)}
         icon={(
           <AllInboxIcon
-            htmlColor={window.location.pathname === MenuUrl.user
+            htmlColor={window.location.pathname === MenuUrl.product
               ? colors.yellowRegular
               : colors.white}
           />
         )}
-        isSelected={window.location.pathname === MenuUrl.user}
+        isSelected={window.location.pathname === MenuUrl.product}
       >
         PRODUTOS
       </ButtonMenu>
