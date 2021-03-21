@@ -10,6 +10,6 @@ const App = () => (
     <SnackBar />
     <Routes />
   </Provider>
-  );
+);
 
 export default App;
