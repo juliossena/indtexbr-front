@@ -1,17 +1,18 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
+import PeopleIcon from '@material-ui/icons/People';
+import HomeIcon from '@material-ui/icons/Home';
+import AllInboxIcon from '@material-ui/icons/AllInbox';
 
+import { RootStateGlobal } from '../../../store/reducer';
+import { colors } from '../../functions/colors';
 import { MenuUrl } from '../../enums/menuUrl';
-import IconHome from '../../images/icon/iconHome';
 import ButtonMenu from '../buttons/buttonMenu/ButtonMenu';
 import {
     Container,
     Img,
 } from './styles';
-import IconMembers from '../../images/icon/iconMembers';
-import { colors } from '../../functions/colors';
-import { RootStateGlobal } from '../../../store/reducer';
 
 const Menu = () => {
   const history = useHistory();
@@ -22,7 +23,13 @@ const Menu = () => {
       <Img src="/svg/logo.svg" alt="Logo" />
       <ButtonMenu
         onClick={() => history.push(MenuUrl.home)}
-        icon={<IconHome />}
+        icon={(
+          <HomeIcon
+            htmlColor={window.location.pathname === MenuUrl.home
+            ? colors.yellowRegular
+            : colors.white}
+          />
+)}
         isSelected={window.location.pathname === MenuUrl.home}
       >
         HOME
@@ -31,8 +38,8 @@ const Menu = () => {
         <ButtonMenu
           onClick={() => history.push(MenuUrl.user)}
           icon={(
-            <IconMembers
-              color={window.location.pathname === MenuUrl.user
+            <PeopleIcon
+              htmlColor={window.location.pathname === MenuUrl.user
                 ? colors.yellowRegular
                 : colors.white}
             />
@@ -46,8 +53,10 @@ const Menu = () => {
       <ButtonMenu
         onClick={() => history.push(MenuUrl.user)}
         icon={(
-          <IconMembers
-            color={window.location.pathname === MenuUrl.user ? colors.yellowRegular : colors.white}
+          <AllInboxIcon
+            htmlColor={window.location.pathname === MenuUrl.user
+              ? colors.yellowRegular
+              : colors.white}
           />
         )}
         isSelected={window.location.pathname === MenuUrl.user}

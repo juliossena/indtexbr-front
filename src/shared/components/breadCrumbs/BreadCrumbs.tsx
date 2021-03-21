@@ -1,5 +1,5 @@
 import React from 'react';
-import IconChevronRight from '../../images/icon/iconChevronRight';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import {
     Container,
     Title,
@@ -31,7 +31,7 @@ const BreadCrumbs = ({ listMenus }: PBreadCrumbs) => {
             if (index === 0) return null;
             return (
               <>
-                <IconChevronRight style={{ margin: '0px 16px' }} />
+                <ChevronRightIcon style={{ margin: '0px 16px' }} />
                 <Title
                   isAction={menu.action !== undefined}
                   onClick={menu.action}

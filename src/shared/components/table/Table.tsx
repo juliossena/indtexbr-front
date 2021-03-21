@@ -1,7 +1,8 @@
 import React, { ReactNode, useEffect, useState } from 'react';
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
+
 import { colors } from '../../functions/colors';
-import IconChevronBottom from '../../images/icon/iconChevronBottom';
-import IconChevronRight from '../../images/icon/iconChevronRight';
 import ButtonIcon from '../buttons/buttonIcon/ButtonIcon';
 import { verifySortTable } from './verifySortTable';
 
@@ -85,7 +86,7 @@ const Table = ({
                 <HeaderSort openClick={title.openClick}>
                   {title.name}
                   {columnSort === index && (
-                    <IconChevronBottom
+                    <KeyboardArrowDownIcon
                       style={{
                         transform: typeOrder === Order.ASC ? 'rotate(0)' : 'rotate(180deg)',
                         transition: '0.5s',
@@ -120,13 +121,13 @@ const Table = ({
           disabled={isFirstPage()}
           onClick={() => setCurrentPage(currentPage - 1)}
         >
-          <IconChevronRight style={{ transform: 'rotate(180deg)' }} color={isFirstPage() ? colors.grey100 : colors.primary} />
+          <KeyboardArrowRightIcon style={{ transform: 'rotate(180deg)' }} htmlColor={isFirstPage() ? colors.grey100 : colors.primary} />
         </ButtonIcon>
         <ButtonIcon
           disabled={isLastPage()}
           onClick={() => setCurrentPage(currentPage + 1)}
         >
-          <IconChevronRight color={isLastPage() ? colors.grey100 : colors.primary} />
+          <KeyboardArrowRightIcon htmlColor={isLastPage() ? colors.grey100 : colors.primary} />
         </ButtonIcon>
       </BottomPagination>
     </>

@@ -1,12 +1,14 @@
 import React, {
  ChangeEvent, useEffect, useState,
 } from 'react';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 import { useSelector, useDispatch } from 'react-redux';
+
 import Button from '../../shared/components/buttons/Button';
 import ButtonIcon from '../../shared/components/buttons/buttonIcon/ButtonIcon';
 import Table from '../../shared/components/table/Table';
 import { operations as userOperations } from '../../store/reducers/user';
-import IconEdit from '../../shared/images/icon/iconEdit';
 import InsertMember from './insertEditMember/InsertEditMember';
 import { User } from '../../shared/modals/user/user';
 import {
@@ -20,7 +22,6 @@ import Input from '../../shared/components/input/Input';
 import { colors } from '../../shared/functions/colors';
 import { RootStateGlobal } from '../../store/reducer';
 import { filterArraySearch } from '../../shared/functions/utils';
-import IconTrash from '../../shared/images/icon/iconTrash';
 import DeleteUser from './deleteUser/DeleteUser';
 
 const Member = () => {
@@ -76,12 +77,12 @@ const Member = () => {
             style={{ marginRight: 16 }}
             onClick={() => goToEditUser(user)}
           >
-            <IconEdit />
+            <EditIcon />
           </ButtonIcon>
           <ButtonIcon
             onClick={() => handleOnClickDeleteUser(user)}
           >
-            <IconTrash />
+            <DeleteIcon />
           </ButtonIcon>
         </>,
       ],

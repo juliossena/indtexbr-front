@@ -1,15 +1,15 @@
 import React, { ButtonHTMLAttributes, ReactNode, FC } from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import AddIcon from '@material-ui/icons/Add';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import FilterListIcon from '@material-ui/icons/FilterList';
 
-import ArrowRight from '../../images/icon/arrows/arrowRight';
+import { colors } from '../../functions/colors';
 import {
   Container,
   BoxIcon,
 } from './styles';
-import IconPlus from '../../images/icon/iconPlus';
-import { colors } from '../../functions/colors';
-import IconPlusInnerBorder from '../../images/icon/iconPlusInnerBorder';
-import IconFilter from '../../images/icon/iconFilter';
 
 interface OwnProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   icon?: string;
@@ -42,19 +42,19 @@ const Button: FC<OwnProps> = ({
     switch (typeIcon) {
       case 'arrowRight':
         return (
-          <ArrowRight />
+          <ChevronRightIcon />
         );
       case 'plus':
         return (
-          <IconPlus color={colorIcon} style={{ margin: `${icon ? '0px 0px 0px 8px' : '0px 8px 0px 0px'}` }} />
+          <AddIcon htmlColor={colorIcon} style={{ margin: `${icon ? '0px 0px 0px 8px' : '0px 8px 0px 0px'}` }} />
         );
       case 'plusInnerBorder':
         return (
-          <IconPlusInnerBorder color={colorIcon} style={{ margin: `${icon ? '0px 0px 0px 8px' : '0px 8px 0px 0px'}` }} />
+          <AddCircleOutlineIcon htmlColor={colorIcon} style={{ margin: `${icon ? '0px 0px 0px 8px' : '0px 8px 0px 0px'}` }} />
         );
       case 'filter':
         return (
-          <IconFilter color={colorIcon} style={{ margin: `${icon ? '0px 0px 0px 8px' : '0px 8px 0px 0px'}` }} />
+          <FilterListIcon htmlColor={colorIcon} style={{ margin: `${icon ? '0px 0px 0px 8px' : '0px 8px 0px 0px'}` }} />
         );
       default:
         return null;

@@ -1,8 +1,9 @@
 import React from 'react';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import PersonIcon from '@material-ui/icons/Person';
+
 import { colors } from '../../functions/colors';
 import { doLogout } from '../../functions/connection/auth';
-import IconLogout from '../../images/icon/iconLogout';
-import IconMember from '../../images/icon/iconMember';
 import { User } from '../../modals/user/user';
 import ButtonIcon from '../buttons/buttonIcon/ButtonIcon';
 
@@ -27,14 +28,14 @@ const Header = ({ userData }: PHeader) => {
         {`Olá, ${userData.name}!`}
       </TextHeader>
       <BoxUser>
-        <IconMember />
+        <PersonIcon />
         <BoxNameUser>
           <NameUser>
             {userData.name}
           </NameUser>
         </BoxNameUser>
         <ButtonIcon onClick={doLogout}>
-          <IconLogout color={colors.primary} />
+          <ExitToAppIcon htmlColor={colors.primary} />
         </ButtonIcon>
       </BoxUser>
     </Container>

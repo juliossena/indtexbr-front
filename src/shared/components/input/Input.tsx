@@ -1,8 +1,8 @@
 import React, { InputHTMLAttributes, FC } from 'react';
 import { CSSProperties } from 'styled-components';
-import { colors } from '../../functions/colors';
-import IconSearch from '../../images/icon/iconSearch';
+import SearchIcon from '@material-ui/icons/Search';
 
+import { colors } from '../../functions/colors';
 import {
   Container,
   StyledInput,
@@ -39,7 +39,7 @@ const Input: FC<PInput> = ({
   const renderIcon = () => {
     switch (icon) {
       case 'search':
-        return <IconSearch style={{ margin: '8px -16px 8px 12px', zIndex: 2 }} />;
+        return <SearchIcon style={{ margin: '8px -16px 8px 12px', zIndex: 2 }} />;
       default:
         return null;
     }

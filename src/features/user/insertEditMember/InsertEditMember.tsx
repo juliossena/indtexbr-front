@@ -12,7 +12,6 @@ import { operations as userOperations } from '../../../store/reducers/user';
 import { BodyCreateMember } from '../../../shared/modals/user/bodies';
 import { User } from '../../../shared/modals/user/user';
 import BreadCrumbs from '../../../shared/components/breadCrumbs/BreadCrumbs';
-import { POptions } from '../../../shared/components/select/Select';
 import SnackBar, { PSnackbar } from '../../../shared/components/snackbar/Snackbar';
 import {
     Container,
@@ -53,15 +52,7 @@ const InsertMember = ({
         .editMember(x, y));
     const [loading, setLoading] = useState(false);
     const [snackBar, setSnackbar] = useState<PSnackbar>({ type: '', message: '', show: false });
-    const [itensAreaSelected, setItensAreaSelected] = useState<POptions[]>([]);
     const [bodyCreateMember, setBodyCreateMember] = useState<BodyCreateMember>(INITIAL_BODY);
-
-    useEffect(() => {
-      setBodyCreateMember({
-        ...bodyCreateMember,
-        areas: itensAreaSelected.map(option => parseInt(option.value, 10)),
-      });
-    }, [itensAreaSelected]);
 
     useEffect(() => {
       if (user) {
@@ -72,7 +63,6 @@ const InsertMember = ({
           admin: user.idTypeUser === 2,
         });
       } else {
-        setItensAreaSelected([]);
         setBodyCreateMember(INITIAL_BODY);
       }
     }, [isEdit, user]);
