@@ -7,7 +7,6 @@ import {
     ConnectApiPUT,
     ConnectApiDelete,
 } from '../functions/connection';
-import { Company } from '../modals/user/user';
 
 
 export const login = async (body: BodyUserLogin) => {
@@ -37,12 +36,6 @@ export const importUserList = async (body: FormData) => {
 
 export const insertAdmin = async (body: BodyCreateMember) => {
     const respostaServico = await ConnectApiPost(urls.URL_USER_INSERT_ADMIN_COMPANY, body);
-    return respostaServico.data;
-};
-
-export const insertAdminGlobal = async (body: BodyCreateMember, company: Company) => {
-    const url = urls.URL_USER_INSERT_ADMIN_COMPANY_GLOBAL.replace('{idCompany}', `${company.idCompany}`);
-    const respostaServico = await ConnectApiPost(url, body);
     return respostaServico.data;
 };
 

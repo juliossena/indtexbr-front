@@ -5,7 +5,6 @@ import { UserState, UserTypes } from './types';
 const INITIAL_STATE: UserState = {
   userData: undefined,
   users: [],
-  areas: [],
 };
 
 const reducer: Reducer<UserState> = (state = INITIAL_STATE, action) => {
@@ -19,11 +18,6 @@ const reducer: Reducer<UserState> = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         users: action.payload,
-      };
-    case UserTypes.SET_ALL_AREAS:
-      return {
-        ...state,
-        areas: action.payload,
       };
     default:
       return state;

@@ -41,12 +41,3 @@ export const NameUser = styled.p`
   line-height: 24px;
   color: ${colors.primary};
 `;
-
-export const AreaUser = styled.p`
-  font-family: ${fonts.regular};
-  font-style: normal;
-  font-weight: normal;
-  font-size: 10px;
-  line-height: 15px;
-  color: ${colors.grey100};
-`;

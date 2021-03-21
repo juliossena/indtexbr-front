@@ -12,7 +12,6 @@ import {
     BoxUser,
     BoxNameUser,
     NameUser,
-    AreaUser,
 } from './styles';
 
 interface PHeader {
@@ -25,7 +24,7 @@ const Header = ({ userData }: PHeader) => {
   return (
     <Container>
       <TextHeader>
-        {`Olá, ${userData.company ? userData.company.name : userData.name}!`}
+        {`Olá, ${userData.name}!`}
       </TextHeader>
       <BoxUser>
         <IconMember />
@@ -33,11 +32,6 @@ const Header = ({ userData }: PHeader) => {
           <NameUser>
             {userData.name}
           </NameUser>
-          {userData.typeUser && (
-            <AreaUser>
-              {userData.typeUser.name.toUpperCase()}
-            </AreaUser>
-          )}
         </BoxNameUser>
         <ButtonIcon onClick={doLogout}>
           <IconLogout color={colors.primary} />

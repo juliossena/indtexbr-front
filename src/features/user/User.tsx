@@ -1,5 +1,5 @@
 import React, {
- ChangeEvent, ReactNode, useEffect, useState,
+ ChangeEvent, useEffect, useState,
 } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Button from '../../shared/components/buttons/Button';
@@ -8,19 +8,14 @@ import Table from '../../shared/components/table/Table';
 import { operations as userOperations } from '../../store/reducers/user';
 import IconEdit from '../../shared/images/icon/iconEdit';
 import InsertMember from './insertEditMember/InsertEditMember';
-import { User, Area } from '../../shared/modals/user/user';
-import BlockUser from './blockUser/BlockUser';
+import { User } from '../../shared/modals/user/user';
 import {
   Container,
   Header,
   TextHeader,
-  BoxAreas,
-  BoxNameArea,
   BoxHeaderButtons,
 } from './styles';
 import BreadCrumbs from '../../shared/components/breadCrumbs/BreadCrumbs';
-import IconBlock from '../../shared/images/icon/iconBlock';
-import IconAuthorized from '../../shared/images/icon/iconAuthorized';
 import Input from '../../shared/components/input/Input';
 import { colors } from '../../shared/functions/colors';
 import { RootStateGlobal } from '../../store/reducer';
@@ -33,7 +28,6 @@ const Member = () => {
   const getQuestions = async () => dispatch(userOperations.getAllUsers());
   const { users } = useSelector((state: RootStateGlobal) => state.userReducer);
   const [usersFilter, setUsersFilter] = useState<User[]>([]);
-  const [openBlockUser, setOpenBlockUser] = useState(false);
   const [userAction, setUserAction] = useState<User>();
   const [showInsertMember, setShowInsertMember] = useState(false);
   const [searchMember, setSearchMember] = useState('');
@@ -49,22 +43,6 @@ const Member = () => {
       setUsersFilter(users);
     }
   }, [users]);
-
-  const renderAreas = (areas: Area[]) => {
-      const areasComponent: ReactNode[] = [];
-      areas.forEach((area: Area) => {
-        areasComponent.push(
-          <BoxNameArea>
-            {area.name}
-          </BoxNameArea>,
-        );
-      });
-      return (
-        <BoxAreas>
-          {areasComponent}
-        </BoxAreas>
-      );
-  };
 
   const goToEditUser = (user: User) => {
     setShowInsertMember(true);
@@ -90,20 +68,9 @@ const Member = () => {
     setOpenDeleteUser(true);
   };
 
-  const handleBlockUser = (user: User) => {
-    setUserAction(user);
-    setOpenBlockUser(true);
-  };
-
   const renderRowsTable = () => usersFilter.map((user: User) => ({
       columns: [
         user.name,
-        renderAreas(user.areas),
-        <ButtonIcon
-          onClick={() => handleBlockUser(user)}
-        >
-          {user.block ? <IconBlock /> : <IconAuthorized />}
-        </ButtonIcon>,
         <>
           <ButtonIcon
             style={{ marginRight: 16 }}
@@ -132,11 +99,6 @@ const Member = () => {
 
   return (
     <Container>
-      <BlockUser
-        openBlockUser={openBlockUser}
-        user={userAction}
-        setOpenBlockUser={setOpenBlockUser}
-      />
       <DeleteUser
         openDeleteUser={openDeleteUser}
         user={userAction}
@@ -177,23 +139,13 @@ const Member = () => {
             name: 'Nome',
             openClick: true,
             type: 'string',
-            widthTd: '20%',
-          },
-          {
-            name: 'Áreas',
-            openClick: false,
-            type: 'ReactNode',
-            widthTd: '50%',
-          },
-          {
-            name: 'Permissões',
-            openClick: false,
-            type: 'ReactNode',
+            widthTd: '85%',
           },
           {
             name: 'Ações',
             openClick: false,
             type: 'ReactNode',
+            widthTd: '15%',
           },
         ]}
         rows={renderRowsTable()}

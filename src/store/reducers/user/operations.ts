@@ -1,12 +1,11 @@
 import { Dispatch } from 'redux';
-import { BodyInsertArea, BodyUserLogin, BodyCreateMember } from '../../../shared/modals/user/bodies';
+import { BodyUserLogin, BodyCreateMember } from '../../../shared/modals/user/bodies';
 
 import { ERROR_INVALID_PASSWORD } from '../../../shared/constants/messages';
 
 import * as userActions from './actions';
 import * as serviceUser from '../../../shared/services/serviceUser';
 import { setAuthorizationToken } from '../../../shared/functions/connection/auth';
-import { Company } from '../../../shared/modals/user/user';
 
 export const reqLogin = (bodyUserLogin: BodyUserLogin) => async (dispatch: Dispatch) => {
     try {
@@ -82,18 +81,6 @@ export const insertAdmin = (body: BodyCreateMember) => async (dispatch: Dispatch
     }
 };
 
-export const insertAdminGlobal = (
-    body: BodyCreateMember,
-    company: Company,
-) => async (dispatch: Dispatch) => {
-    try {
-        await serviceUser.insertAdminGlobal(body, company);
-        getAllUsers()(dispatch);
-    } catch (error) {
-        throw new Error(error);
-    }
-};
-
 export const editMember = (
     body: BodyCreateMember,
     idUser: number,
@@ -110,45 +97,6 @@ export const deleteUser = (idUser: number) => async (dispatch: Dispatch) => {
     try {
         await serviceUser.deleteUser(idUser);
         getAllUsers()(dispatch);
-    } catch (error) {
-        throw new Error(error);
-    }
-};
-
-export const getAllAreas = () => async (dispatch: Dispatch) => {
-    try {
-        const areas = await serviceUser.getAllAreas();
-        dispatch(userActions.setAreas(areas));
-    } catch (error) {
-        dispatch(userActions.setAreas([]));
-    }
-};
-
-export const insertArea = (body: BodyInsertArea) => async (dispatch: Dispatch) => {
-    try {
-        await serviceUser.insertArea(body);
-        await getAllAreas()(dispatch);
-        await getAllUsers()(dispatch);
-    } catch (error) {
-        throw new Error(error);
-    }
-};
-
-export const deleteArea = (idArea: number) => async (dispatch: Dispatch) => {
-    try {
-        await serviceUser.deleteArea(idArea);
-        await getAllAreas()(dispatch);
-        await getAllUsers()(dispatch);
-    } catch (error) {
-        throw new Error(error);
-    }
-};
-
-export const editArea = (idArea: number, body: BodyInsertArea) => async (dispatch: Dispatch) => {
-    try {
-        await serviceUser.editArea(idArea, body);
-        await getAllAreas()(dispatch);
-        await getAllUsers()(dispatch);
     } catch (error) {
         throw new Error(error);
     }

@@ -107,13 +107,13 @@ const Login = () => {
             Seja bem-vindo
             {' '}
             <br />
-            ao MagiCash Business
+            ao IndTexBR
           </TitleLogin>
         </Content>
       </Item>
       <Item>
         <LoginContainer>
-          <Title>Acesse a MagiCash</Title>
+          <Title>Acesse o IndTexBR</Title>
           <Form onSubmit={handleLogin}>
             <InputContainer>
               <Input
