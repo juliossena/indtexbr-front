@@ -19,7 +19,7 @@ export enum colors {
   red = '#B90000',
   yellow = '#ffd33a',
   secondary = '#8C29B0',
-  primary = '#512C85',
+  primary = '#00687e',
   yellowRegular = '#FFF85C',
   orangeRegular = '#F09838',
   pinkDark = '#8C29B0',

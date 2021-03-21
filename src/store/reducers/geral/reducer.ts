@@ -4,6 +4,11 @@ import { GeralState, GeralTypes } from './types';
 
 const INITIAL_STATE: GeralState = {
   loading: false,
+  snackBar: {
+    type: '',
+    message: '',
+    show: false,
+  },
 };
 
 const reducer: Reducer<GeralState> = (state = INITIAL_STATE, action) => {
@@ -12,6 +17,11 @@ const reducer: Reducer<GeralState> = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         loading: action.payload,
+      };
+    case GeralTypes.SET_SNACK_BAR:
+      return {
+        ...state,
+        snackBar: action.payload,
       };
     default:
       return state;

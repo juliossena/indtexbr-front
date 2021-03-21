@@ -12,7 +12,6 @@ import { operations as userOperations } from '../../../store/reducers/user';
 import { BodyCreateMember } from '../../../shared/modals/user/bodies';
 import { User } from '../../../shared/modals/user/user';
 import BreadCrumbs from '../../../shared/components/breadCrumbs/BreadCrumbs';
-import SnackBar, { PSnackbar } from '../../../shared/components/snackbar/Snackbar';
 import {
     Container,
     BoxInsertMember,
@@ -21,6 +20,7 @@ import {
     ContainerInsertMember,
     DisplayFlex,
 } from './styles';
+import { geralActions } from '../../../store/reducers/geral';
 
 interface PInsertMember {
     setShowInsertMember: Dispatch<SetStateAction<boolean>>;
@@ -49,7 +49,6 @@ const InsertMember = ({
     const editMember = async (x: BodyCreateMember, y: number) => dispatch(userOperations
         .editMember(x, y));
     const [loading, setLoading] = useState(false);
-    const [snackBar, setSnackbar] = useState<PSnackbar>({ type: '', message: '', show: false });
     const [bodyCreateMember, setBodyCreateMember] = useState<BodyCreateMember>(INITIAL_BODY);
 
     useEffect(() => {
@@ -80,19 +79,19 @@ const InsertMember = ({
             await editMember(bodyCreateMember, user.idUser);
           } else {
               await insertMember(bodyCreateMember);
-              setSnackbar({
+              dispatch(geralActions.setSnackBar(({
                 type: 'success',
                 message: 'Usuário criado com sucesso.',
                 show: true,
-              });
+              })));
             }
           setShowInsertMember(false);
         } catch (error) {
-          setSnackbar({
+          dispatch(geralActions.setSnackBar(({
             type: 'error',
             message: error.message,
             show: true,
-          });
+          })));
           setLoading(false);
         }
         setLoading(false);
@@ -121,12 +120,6 @@ const InsertMember = ({
 
     return (
       <Container>
-        <SnackBar
-          type={snackBar.type}
-          message={snackBar.message}
-          show={snackBar.show}
-          setSnackBar={setSnackbar}
-        />
         <BreadCrumbs
           listMenus={[{
             name: 'Membros',

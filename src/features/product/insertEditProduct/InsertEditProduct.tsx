@@ -12,7 +12,6 @@ import { productOperations } from '../../../store/reducers/product';
 import { BodyCreateProduct } from '../../../shared/modals/product/bodies';
 import { Product } from '../../../shared/modals/product/product';
 import BreadCrumbs from '../../../shared/components/breadCrumbs/BreadCrumbs';
-import SnackBar, { PSnackbar } from '../../../shared/components/snackbar/Snackbar';
 import {
     Container,
     BoxInsertProduct,
@@ -20,6 +19,7 @@ import {
     BoxBottom,
     ContainerInsertProduct,
 } from './styles';
+import { geralActions } from '../../../store/reducers/geral';
 
 interface PInsertProduct {
     setShowInsertProduct: Dispatch<SetStateAction<boolean>>;
@@ -43,7 +43,6 @@ const InsertProduct = ({
     const editProduct = async (x: BodyCreateProduct, y: number) => dispatch(productOperations
         .editProduct(x, y));
     const [loading, setLoading] = useState(false);
-    const [snackBar, setSnackbar] = useState<PSnackbar>({ type: '', message: '', show: false });
     const [bodyCreateProduct, setBodyCreateProduct] = useState<BodyCreateProduct>(INITIAL_BODY);
 
     useEffect(() => {
@@ -73,19 +72,21 @@ const InsertProduct = ({
             await editProduct(bodyCreateProduct, product.idProduct);
           } else {
               await insertProduct(bodyCreateProduct);
-              setSnackbar({
-                type: 'success',
-                message: 'Usuário criado com sucesso.',
-                show: true,
-              });
+              dispatch(geralActions.setSnackBar(
+                {
+                  type: 'success',
+                  message: 'Usuário criado com sucesso.',
+                  show: true,
+                },
+              ));
             }
           setShowInsertProduct(false);
         } catch (error) {
-          setSnackbar({
+          dispatch(geralActions.setSnackBar(({
             type: 'error',
             message: error.message,
             show: true,
-          });
+          })));
           setLoading(false);
         }
         setLoading(false);
@@ -107,12 +108,6 @@ const InsertProduct = ({
 
     return (
       <Container>
-        <SnackBar
-          type={snackBar.type}
-          message={snackBar.message}
-          show={snackBar.show}
-          setSnackBar={setSnackbar}
-        />
         <BreadCrumbs
           listMenus={[{
             name: 'Produtos',

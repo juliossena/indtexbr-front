@@ -6,22 +6,18 @@ import Button from '../../shared/components/buttons/Button';
 import { isLogged } from '../../shared/functions/connection/auth';
 import { BodyUserLogin } from '../../shared/modals/user/bodies';
 import { operations as operationsUser } from '../../store/reducers/user';
-import SnackBar, { PSnackbar } from '../../shared/components/snackbar/Snackbar';
 
 import Input from '../../shared/components/input/Input';
 
 import {
-  Item,
-  Grid,
-  Content,
+  Container,
   Form,
   InputContainer,
   Title,
-  Logo,
   LoginContainer,
   ButtonContainer,
-  TitleLogin,
 } from './styles';
+import { geralActions } from '../../store/reducers/geral';
 
 interface Props {
   readonly isOpen: boolean;
@@ -34,7 +30,6 @@ const Login = () => {
   const getUserData = async () => dispatch(operationsUser.getUserData());
 
   const [loading, setLoading] = useState<boolean>(false);
-  const [snackBar, setSnackbar] = useState<PSnackbar>({ type: '', message: '', show: false });
   const [error, setError] = useState<boolean>(false);
   const [login, setLogin] = useState<BodyUserLogin>({
     email: '',
@@ -65,11 +60,11 @@ const Login = () => {
       history.push('/home');
     } catch (e) {
       setError(true);
-      setSnackbar({
+      dispatch(geralActions.setSnackBar({
         type: 'error',
         message: e.message,
         show: true,
-      });
+      }));
     }
     setLoading(false);
   };
@@ -91,59 +86,38 @@ const Login = () => {
   };
 
   return (
-    <Grid>
-      <SnackBar
-        type={snackBar.type}
-        message={snackBar.message}
-        show={snackBar.show}
-        setSnackBar={setSnackbar}
-      />
-      <Item>
-        <Content>
-          <Logo
-            style={{ backgroundImage: '/svg/logo.svg' }}
-          />
-          <TitleLogin>
-            Seja bem-vindo
-            {' '}
-            <br />
-            ao IndTexBR
-          </TitleLogin>
-        </Content>
-      </Item>
-      <Item>
-        <LoginContainer>
-          <Title>Acesse o IndTexBR</Title>
-          <Form onSubmit={handleLogin}>
-            <InputContainer>
-              <Input
-                error={error}
-                title="Digite o seu email"
-                placeholder="Digite o seu email"
-                type="email"
-                value={login.email}
-                onChange={handleChangeEmail}
-              />
-            </InputContainer>
-            <InputContainer>
-              <Input
-                error={error}
-                title="Digite a sua senha"
-                placeholder="Digite a sua senha"
-                type="password"
-                value={login.password}
-                onChange={handleChangePassword}
-              />
-            </InputContainer>
-            <ButtonContainer>
-              <Button typeButton="submit" icon="arrowRight" loading={loading}>
-                Acesse agora
-              </Button>
-            </ButtonContainer>
-          </Form>
-        </LoginContainer>
-      </Item>
-    </Grid>
+    <Container>
+      <LoginContainer>
+        <Title>Acesse o IndTexBR</Title>
+        <Form onSubmit={handleLogin}>
+          <InputContainer>
+            <Input
+              error={error}
+              title="Digite o seu email"
+              placeholder="Digite o seu email"
+              type="email"
+              value={login.email}
+              onChange={handleChangeEmail}
+            />
+          </InputContainer>
+          <InputContainer>
+            <Input
+              error={error}
+              title="Digite a sua senha"
+              placeholder="Digite a sua senha"
+              type="password"
+              value={login.password}
+              onChange={handleChangePassword}
+            />
+          </InputContainer>
+          <ButtonContainer>
+            <Button typeButton="submit" icon="arrowRight" loading={loading}>
+              Acesse agora
+            </Button>
+          </ButtonContainer>
+        </Form>
+      </LoginContainer>
+    </Container>
   );
 };
 
