@@ -13,10 +13,21 @@ export const Header = styled.div`
     align-items: center;
     margin: 24px 0px;
     justify-content: space-between;
+
+    @media (max-width: 800px) {
+        display: block;
+      }
 `;
 
 export const BoxHeaderButtons = styled.div`
     display: flex;
+    @media (max-width: 800px) {
+        flex-direction: column;
+        margin: 24px 0px;
+        height: 100px;
+        justify-content: inherit;
+        align-items: center;
+    }
 `;
 
 export const TextHeader = styled.p`

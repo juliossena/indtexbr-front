@@ -38,8 +38,8 @@ const DeleteProduct = ({
     return (
       <ModalConfirm
         loadingPrimary={loadingBlock}
-        message="Tem certeza que deseja excluir o membro?"
-        title="Excluir membro"
+        message="Tem certeza que deseja excluir o produto?"
+        title="Excluir produto"
         onClose={() => setOpenDeleteProduct(false)}
         open={openDeleteProduct}
         onClickPrimary={handleDeleteProduct}

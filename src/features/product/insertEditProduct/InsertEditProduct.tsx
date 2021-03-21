@@ -75,7 +75,7 @@ const InsertProduct = ({
               dispatch(geralActions.setSnackBar(
                 {
                   type: 'success',
-                  message: 'Usuário criado com sucesso.',
+                  message: 'Produto criado com sucesso.',
                   show: true,
                 },
               ));
@@ -102,7 +102,7 @@ const InsertProduct = ({
     const handleChangeAmount = (event: ChangeEvent<HTMLInputElement>) => {
         setBodyCreateProduct({
             ...bodyCreateProduct,
-            amount: parseInt(event.target.value, 10),
+            amount: parseInt(event.target.value, 10) ? parseInt(event.target.value, 10) : 0,
         });
     };
 
